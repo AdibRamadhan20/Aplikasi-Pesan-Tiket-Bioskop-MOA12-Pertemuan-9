@@ -1,0 +1,386 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #141414;
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: #111;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-nav-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #e50914;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #e50914;
+}
+
+.profile {
+  margin-left: 20cm;
+}
+
+.profile img {
+  width: 30px; /* Ukuran lebih kecil */
+  height: 30px; /* Ukuran lebih kecil */
+  border-radius: 50%; /* Membuat gambar bulat */
+  object-fit: cover;
+  border: 2px solid white;
+  transition: transform 0.3s;
+}
+
+.profile img:hover {
+  transform: scale(1.1); /* Efek zoom saat hover */
+}
+
+.marquee {
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: #222;
+  padding: 10px;
+  margin-top: 10px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.marquee span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.hero {
+  position: relative;
+  height: 80vh;
+  background-color: black;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-content {
+  position: absolute;
+  bottom: 30px;
+  left: 50px;
+}
+
+.hero-content h1 {
+  font-size: 50px;
+  color: white;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #e50914;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px; /* Sudut tombol melengkung */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* Tambahan untuk transisi */
+}
+
+button:hover {
+  background-color: #f40612; /* Warna tombol saat hover */
+}
+
+button:active {
+  transform: translateY(2px); /* Efek timbul saat tombol ditekan */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Bayangan saat tombol ditekan */
+}
+
+.movie-grid {
+  padding: 20px 50px;
+  background-color: #141414;
+}
+
+.movie-grid h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Menampilkan 6 film dalam 1 baris */
+  gap: 20px;
+}
+
+.movie-item {
+  position: relative; /* Membuat posisi relatif untuk mengatur tombol */
+}
+
+.movie-item img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.movie-item img:hover {
+  transform: scale(1.1);
+}
+
+/* Styling untuk tombol di dalam movie-item */
+.movie-buttons {
+  display: flex;
+  justify-content: center; /* Menengahkan tombol di dalam item film */
+  margin-top: 10px; /* Jarak antara gambar film dan tombol */
+  gap: 10px; /* Jarak antar tombol */
+}
+
+.play-button,
+.more-info-button {
+  padding: 10px 15px; /* Ukuran tombol */
+  background-color: #e50914; /* Warna latar belakang */
+  border: none; /* Menghilangkan border */
+  color: white; /* Warna teks */
+  cursor: pointer; /* Kursor pointer saat hover */
+  font-size: 14px; /* Ukuran font */
+  border-radius: 5px; /* Sudut tombol melengkung */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* Tambahan untuk transisi */
+}
+
+.play-button:hover,
+.more-info-button:hover {
+  background-color: #f40612; /* Warna tombol saat hover */
+}
+
+.play-button:active,
+.more-info-button:active {
+  transform: translateY(2px); /* Efek timbul saat tombol ditekan */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Bayangan saat tombol ditekan */
+  background-color: #c40812; /* Warna lebih gelap saat ditekan */
+}
+
+/* Styling untuk caption container */
+.caption-container {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  z-index: 2000; /* Pastikan caption di atas elemen lainnya */
+}
+
+.caption-container p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.caption-container button {
+  padding: 5px 10px;
+  background-color: #e50914;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.caption-container button:hover {
+  background-color: #f40612; /* Warna tombol saat hover */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Mengatur tiga kolom */
+  gap: 20px; /* Jarak antara film */
+}
+
+.popup {
+  display: none; /* Awalnya sembunyi */
+  position: fixed;
+  left: 50%;
+  top: -100%; /* Mulai di atas layar */
+  transform: translate(-50%, 0); /* Pusatkan pop-up */
+  width: 100%; 
+  max-width: 300px; /* Lebar maksimal pop-up */
+  height: 500px; /* Tinggi tetap untuk pop-up */
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  border-radius: 10px; /* Sudut melengkung */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Bayangan */
+  transition: top 0.5s ease; /* Animasi transisi */
+  text-align: center; /* Pusatkan teks dalam pop-up */
+}
+
+.popup-content {
+  background-color: #141414;
+  color: white;
+  padding: 30px; /* Padding lebih besar */
+  border-radius: 10px; /* Sudut melengkung */
+  display: flex;
+  flex-direction: column; /* Mengatur arah flex */
+  align-items: center; /* Pusatkan konten secara horizontal */
+  height: 100%; /* Membuat konten memenuhi tinggi pop-up */
+  justify-content: space-between; /* Mengatur jarak antar elemen */
+}
+
+.close-button {
+  background-color: #e50914;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-top: 15px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.close-button:hover {
+  background-color: #f40612; /* Warna tombol saat hover */
+}
+
+.booking-container {
+  padding: 20px;
+  background-color: #141414;
+  color: white;
+  width: 100%; /* Membuat container memuat lebar penuh */
+}
+
+.booking-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center; /* Pusatkan judul */
+}
+
+.booking-container label {
+  font-size: 16px;
+  font-weight: bold; /* Tebalkan label */
+  color: #e50914; /* Ubah warna label */
+  display: block; /* Agar label berada di atas input */
+  margin: 10px 0 5px; /* Jarak atas dan bawah label */
+  text-align: left; /* Rata kiri */
+}
+
+.booking-container input, .booking-container select {
+  padding: 10px;
+  border: 1px solid #e50914;
+  border-radius: 5px;
+  background-color: #222;
+  color: white;
+  width: 100%; /* Membuat input dan select memenuhi lebar penuh */
+  box-sizing: border-box; /* Memastikan padding tidak mempengaruhi lebar */
+}
+
+.booking-container button {
+  padding: 10px;
+  background-color: #e50914;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  width: 100%; /* Membuat tombol memenuhi lebar penuh */
+}
+
+.booking-container button:hover {
+  background-color: #f40612; /* Warna tombol saat hover */
+}
+
+.confirmation-message {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #e50914;
+  text-align: center; /* Pusatkan pesan konfirmasi */
+}
+
+footer {
+  padding: 20px;
+  text-align: center;
+  background-color: #111;
+  color: #999;
+}
+
+/* Responsivitas */
+@media (max-width: 768px) {
+  .grid {
+      grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .hero-content h1 {
+      font-size: 30px;
+  }
+
+  .movie-buttons {
+      flex-direction: column; /* Menumpuk tombol saat layar kecil */
+      align-items: center; /* Menengahkan tombol */
+  }
+
+  .play-button,
+  .more-info-button {
+      width: 100%; /* Lebar tombol 100% */
+      font-size: 16px; /* Ukuran font lebih besar */
+      padding: 12px; /* Padding yang lebih besar untuk kenyamanan */
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+  
+  header {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .hero-content h1 {
+      font-size: 24px;
+  }
+
+  .marquee {
+      font-size: 16px; /* Ukuran font lebih kecil di layar kecil */
+  }
+}
