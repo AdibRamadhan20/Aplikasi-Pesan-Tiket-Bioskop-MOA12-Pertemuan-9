@@ -1,38 +1,650 @@
-.App {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #141414;
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: #111;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo-nav-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #e50914;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #e50914;
+}
+
+.profile {
+  margin-left: 17.6cm;
+
+}
+
+.profile img {
+  width: 30px; /* Ukuran lebih kecil */
+  height: 30px; /* Ukuran lebih kecil */
+  border-radius: 50%; /* Membuat gambar bulat */
+  object-fit: cover;
+  border: 2px solid white;
+  transition: transform 0.3s;
+}
+
+.profile img:hover {
+  transform: scale(1.1); /* Efek zoom saat hover */
+}
+
+.marquee {
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: #222;
+  padding: 10px;
+  margin-top: 10px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.marquee span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.hero {
+  position: relative;
+  height: 80vh;
+  background-color: black;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-content {
+  position: absolute;
+  bottom: 30px;
+  left: 50px;
+}
+
+.hero-content h1 {
+  font-size: 50px;
+  color: white;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #e50914;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px; /* Sudut tombol melengkung */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* Tambahan untuk transisi */
+}
+
+.hero-content button a {
+  color: white;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #f40612; /* Warna tombol saat hover */
+}
+
+button:active {
+  transform: translateY(2px); /* Efek timbul saat tombol ditekan */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Bayangan saat tombol ditekan */
+}
+
+.movie-grid {
+  padding: 20px 50px;
+  background-color: #141414;
+}
+
+.movie-grid h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Menampilkan 6 film dalam 1 baris */
+  gap: 20px;
+}
+
+.movie-item {
+  position: relative; /* Membuat posisi relatif untuk mengatur tombol */
+}
+
+.movie-item img {
+  width: 100%;
+  height: 80%;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.movie-item img:hover {
+  transform: scale(1.1);
+}
+
+/* Styling untuk tombol di dalam movie-item */
+.movie-buttons {
+  display: flex;
+  justify-content: center; /* Menengahkan tombol di dalam item film */
+  margin-top: 10px; /* Jarak antara gambar film dan tombol */
+  gap: 10px; /* Jarak antar tombol */
+}
+
+.play-button,
+.more-info-button {
+  padding: 10px 15px; /* Ukuran tombol */
+  background-color: #e50914; /* Warna latar belakang */
+  border: none; /* Menghilangkan border */
+  color: white; /* Warna teks */
+  cursor: pointer; /* Kursor pointer saat hover */
+  font-size: 14px; /* Ukuran font */
+  border-radius: 5px; /* Sudut tombol melengkung */
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* Tambahan untuk transisi */
+}
+
+.play-button:hover,
+.more-info-button:hover {
+  background-color: #f40612; /* Warna tombol saat hover */
+}
+
+.play-button:active,
+.more-info-button:active {
+  transform: translateY(2px); /* Efek timbul saat tombol ditekan */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Bayangan saat tombol ditekan */
+  background-color: #c40812; /* Warna lebih gelap saat ditekan */
+}
+
+/* Styling untuk caption container */
+.caption-container {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
   text-align: center;
+  color: white;
+  z-index: 2000; /* Pastikan caption di atas elemen lainnya */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.caption-container p {
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.caption-container button {
+  padding: 5px 10px;
+  background-color: #e50914;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.caption-container button:hover {
+  background-color: #f40612; /* Warna tombol saat hover */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Mengatur tiga kolom */
+  gap: 20px; /* Jarak antara film */
+}
+
+.popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Lebar penuh */
+  height: 100vh; /* Tinggi penuh */
+  background-color: rgba(0, 0, 0, 0.7); /* Warna latar belakang semi-transparan */
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.popup.open {
+  opacity: 1; /* Pop-up terlihat */
+}
+
+.popup-content {
+  background-color: #141414;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  max-width: 300px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.close-button {
+  background-color: #e50914;
+  border: none;
   color: white;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-top: 15px;
+  font-size: 16px;
+  transition: background-color 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+.close-button:hover {
+  background-color: #f40612; /* Warna tombol saat hover */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.popup-content-infomovie {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center;
+  justify-content: space-between; /* Ensure buttons stay at the bottom */
+  width: 70%;
+  height: 90%;
+  background-color: #111;
+  border: 2px solid red;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.info-content img {
+  width: 390px;
+  height: 500px;
+  display: flex;
+  border-radius: 5px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-right: 17cm; /* Space between image and details */
+}
+
+.info-details {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 17.5cm;
+  width: 60%; /* Set width for text container */
+}
+
+.info-details p {
+  margin-bottom: 0.5cm;
+  width: 69%;
+}
+
+.info-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Space between buttons */
+  padding-top: 10px;
+  border-top: 2px solid red; /* Full-width top border */
+  width: 104%; /* Full width of the container */
+  margin-top: auto; /* Push buttons to the bottom of the container */
+}
+
+.close-button, .book-ticket-button {
+  padding: 10px 20px; /* Add padding for button size */
+  font-size: 16px; /* Adjust font size */
+  cursor: pointer;
+  width: 120px; /* Set a fixed width to prevent vertical stretching */
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+
+
+
+/* Styling the TV-like trailer popup */
+.popup-content-trailer {
+  position: relative;
+  width: 650px;
+  height: 400px;
+  border: 15px solid #333; /* Frame TV */
+  border-radius: 20px; /* Rounded corners */
+  background-color: black;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling for the close button on top */
+.close-button-trailer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #444;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.popup iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 5px;
+}
+
+.booking-container {
+  padding: 20px;
+  background-color: #141414;
+  color: white;
+  width: 100%; /* Membuat container memuat lebar penuh */
+}
+
+.booking-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center; /* Pusatkan judul */
+}
+
+.booking-container label {
+  font-size: 16px;
+  font-weight: bold; /* Tebalkan label */
+  color: #e50914; /* Ubah warna label */
+  display: block; /* Agar label berada di atas input */
+  margin: 10px 0 5px; /* Jarak atas dan bawah label */
+  text-align: left; /* Rata kiri */
+}
+
+.booking-container input, .booking-container select {
+  padding: 10px;
+  border: 1px solid #e50914;
+  border-radius: 5px;
+  background-color: #222;
+  color: white;
+  width: 100%; /* Membuat input dan select memenuhi lebar penuh */
+  box-sizing: border-box; /* Memastikan padding tidak mempengaruhi lebar */
+}
+
+.booking-container button {
+  padding: 10px;
+  background-color: #e50914;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  width: 100%; /* Membuat tombol memenuhi lebar penuh */
+  margin-right: 100px;
+}
+
+.booking-container button:hover {
+  background-color: #f40612; /* Warna tombol saat hover */
+}
+
+.button {
+  margin-top: 1cm;
+}
+
+.confirmation-message {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #e50914;
+  text-align: center; /* Pusatkan pesan konfirmasi */
+}
+
+.footer-container {
+  padding: 20px;
+  background-color: #303030; /* Warna background footer */
+  color: white; /* Warna teks */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between; /* Menyebarkan konten secara merata */
+  align-items: flex-start; /* Menjaga semua konten di atas */
+  margin-bottom: 20px;
+}
+
+.Information-Footer, .Menu-Navbar-Footer, .Link-Footer {
+  flex: 1; 
+  padding: 10px;
+}
+
+.Menu-Navbar-Footer ul, .Link-Footer ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.Menu-Navbar-Footer ul li, .Link-Footer ul li {
+  margin-bottom: 8px;
+}
+
+.footer-bottom {
+  display: flex;               /* Use flexbox layout */
+  justify-content: space-between; /* Space between elements */
+  border-top: 1px solid #444;
+  padding-top: 10px;             /* Add padding if needed */
+}
+
+.footer-bottom p {
+  margin: 0;                  /* Remove default margin */
+  flex: 1;                    /* Allow the paragraph to take available space */
+  text-align: center;         /* Center the text */
+}
+
+.footer-social {
+  display: flex;              /* Flex container for social icons */
+  gap: 10px;                 /* Space between social icons */
+}
+
+.footer-content h2 {
+  color: #f40612;
+}
+
+/* Di file App.css */
+.footer-container a {
+  color: white;
+  text-decoration: none; /* Menghilangkan underline */
+}
+
+.footer-container a:hover {
+  color: #e50914; /* Opsional: Mengubah warna saat link di-hover */
+  text-decoration: underline;
+  text-decoration-color: #e50914;
+}
+
+
+/* Responsivitas */
+@media (max-width: 768px) {
+  .grid {
+      grid-template-columns: repeat(3, 1fr);
   }
-  to {
-    transform: rotate(360deg);
+  
+  .hero-content h1 {
+      font-size: 30px;
   }
+
+  .movie-buttons {
+      flex-direction: column; /* Menumpuk tombol saat layar kecil */
+      align-items: center; /* Menengahkan tombol */
+  }
+
+  .play-button,
+  .more-info-button {
+      width: 100%; /* Lebar tombol 100% */
+      font-size: 16px; /* Ukuran font lebih besar */
+      padding: 12px; /* Padding yang lebih besar untuk kenyamanan */
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+      grid-template-columns: repeat(2, 1fr);
+  }
+  
+  header {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .hero-content h1 {
+      font-size: 24px;
+  }
+
+  .marquee {
+      font-size: 16px; /* Ukuran font lebih kecil di layar kecil */
+  }
+}
+
+/* src/components/AboutUs.css */
+.about-us {
+  background-color: #232222;
+  color: white;
+  padding: 50px;
+  text-align: left;
+  font-family: 'Roboto', sans-serif;
+}
+
+.about-content {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.about-content h1 {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #e50914;
+}
+
+.about-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.about-content strong {
+  color: #e50914;
+}
+
+.movies-container h2{
+  margin-bottom: 0.2cm;
+}
+
+.movies-container .moviegrid {
+  margin-top: 1cm;
+}
+
+.movies-container {
+  padding: 20px; /* Add padding to the container */
+  color: #ffffff; /* Text color for the container */
+  background-color: #232222; /* Background color for the container */
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 20px; /* Space between movie cards */
+}
+
+.movie-card {
+  position: relative; /* Positioning for absolute elements */
+  overflow: hidden; /* Hide overflow of movie details */
+  border-radius: 10px; /* Rounded corners for movie cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+  transition: transform 0.3s; /* Transition for hover effect */
+}
+
+.movie-card:hover {
+  transform: translateY(-10px); /* Lift effect on hover */
+}
+
+.movie-image {
+  width: 100%; /* Full width for image */
+  height: 200px; /* Adjust height to make it more landscape */
+  object-fit: cover; /* Cover to maintain aspect ratio */
+}
+
+.movie-details {
+  position: absolute; /* Positioning relative to the card */
+  bottom: 0; /* Align to the bottom */
+  left: 0; /* Align to the left */
+  right: 0; /* Align to the right */
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  color: white; /* Text color */
+  padding: 15px; /* Padding around details */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.movie-card:hover .movie-details {
+  opacity: 1; /* Show details on hover */
+}
+
+.movie-title {
+  font-size: 18px; /* Title font size */
+  font-weight: bold; /* Bold title */
+}
+
+.movie-genre,
+.movie-rating {
+  margin-top: 5px; /* Space above genre and rating */
+  color: #666; /* Color for genre and rating */
+  font-size: 14px; /* Font size for genre and rating */
 }
